@@ -87,7 +87,28 @@ def replyMessage(Queue, bot, fromnick, replies, channel = None, tonick = ""):
 				print("<<< " + reply  + "\n")
 				times += 1
 
-
+def helloUser(bot, Queue, message,):
+	if re.search(R"JOIN", message.strip()):
+		if re.search(R"PRIVMSG", message.strip()):
+			pass
+		elif re.match(R"^:([^!]+)", message).group(1) == bot.Nick:
+			pass
+		else:
+			tonick = re.match(R"^:([^!]+)", message).group(1)
+			origin_ip = re.search(R"^:([^ ]+)", message).group(1).split('@')[1]
+			if re.search(reIPv4, origin_ip):
+				print(">>> " + tonick)
+				ip = re.search(reIPv4, origin_ip).group(0)
+				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcom to #jolla-cn (type >h for more information)" )
+			elif re.search(reIPv6, origin_ip):
+				print(">>> " + tonick)
+				ip = re.search(reIPv6, origin_ip).group(0)
+				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcom to #jolla-cn (type >h for more information)" )
+			elif re.search(reURL, origin_ip):
+				print(">>> " + tonick)
+				ip = re.search(reURL, origin_ip).group(0)
+				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcom to #jolla-cn (type >h for more information)" )
+					
 def searchUserLocation(bot, Queue, message, check_the_water_meter = ""):
 	if re.search(R"JOIN", message.strip()):
 		if re.search(R"PRIVMSG", message.strip()):
@@ -132,6 +153,7 @@ class filterFun(threading.Thread):
 			(function.webapi.joke,      lambda string: re.search(R"PRIVMSG(.+?):\>j$", string.strip()).group(0)),
 			(function.webapi.maxim,     lambda string: re.search(R"PRIVMSG(.+?):\>m$", string.strip()).group(0)),
 			(function.webapi.sm,        lambda string: re.search(R"PRIVMSG(.+?):\>s (.+)", string).group(2).strip()),
+			(function.webapi.sm,        lambda string: re.search(R"PRIVMSG(.+?):slap (.+)", string).group(2).strip()),
 			(function.webapi.trick,     lambda string: re.search(R"PRIVMSG(.+?):\>u (.+)", string).group(2).strip()),
 			(function.webapi.weather,   lambda string: re.search(R"PRIVMSG(.+?):\>w (.+)", string).group(2).strip()),
 			(function.fenci,            lambda string: re.search(R"PRIVMSG(.+?):\>f (.+)", string).group(2).strip()),
@@ -141,7 +163,7 @@ class filterFun(threading.Thread):
 		self.Map2 = [
 			(function.webapi.py3exec,   lambda string: re.search(R"PRIVMSG(.+?):\>\>\> (.+)", string).group(2).strip())
 		]
-
+		
 	def run(self):
 		if re.search(R"PRIVMSG(.+?):\>n (.+)", self.String):
 			newNick = re.search(R"PRIVMSG(.+?):\>n (.+)", self.String).group(2).strip()
@@ -238,10 +260,10 @@ class ircBot(threading.Thread):
 		while True:
 			try:
 				for line in self.Sock.makefile():
-					print(line)
+					#print(line)
 					childPing = responsePing(messageQueue, line)
 					childPing.start()
-					childSearh = threading.Thread(target = searchUserLocation, args = (self, messageQueue, line, check_the_water_meter))
+					childSearh = threading.Thread(target = helloUser, args = (self, messageQueue, line))
 					childSearh.start()
 					childMatch = filterFun(messageQueue, self, line)
 					childMatch.start()
