@@ -9,10 +9,5 @@ def reply(string):
 		finalResult = data[6:-2]
 		return finalResult.decode("unicode-escape")
 	except:
-		#调用小黄鸡api
-		try:
-			response = urllib.request.urlopen(API + urllib.request.quote(string.encode("utf8")))
-			return r.json()['response'].encode("utf-8")
-		except:
-			return "玩坏了Orz..."
+		return "Orz"
 		
