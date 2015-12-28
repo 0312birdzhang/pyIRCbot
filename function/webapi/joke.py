@@ -1,14 +1,12 @@
 import urllib.request
 import json
 
-jokeURL = "http://www.tuling123.com/openapi/api?key=b1833040534a6bfd761215154069ea58&info="
-
+doubiUrl = "http://api.xiaodoubi.com/api.php?key=73C89DC7-25EC-A32C-B6E9-2AB8BCF75249&chat="
 def reply(string):
 	try:
-		response = urllib.request.urlopen(jokeURL + urllib.request.quote("笑话".encode("utf8")))
+		response = urllib.request.urlopen(jokeURL + urllib.request.quote(string.encode("utf8")))
 		data = response.read()
-		result = json.loads(data.decode("utf8"))
-		finalResult = result['text']
-		return finalResult
+		return data
 	except:
 		return "玩坏掉了。"
+		
