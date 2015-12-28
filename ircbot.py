@@ -153,7 +153,7 @@ class filterFun(threading.Thread):
 			(function.webapi.joke,      lambda string: re.search(R"PRIVMSG(.+?):\>j$", string.strip()).group(0)),
 			(function.webapi.maxim,     lambda string: re.search(R"PRIVMSG(.+?):\>m$", string.strip()).group(0)),
 			(function.webapi.sm,        lambda string: re.search(R"PRIVMSG(.+?):\>s (.+)", string).group(2).strip()),
-			(function.webapi.slap,        lambda string: re.search(R"PRIVMSG(.+?):slap$", string).group(2).strip()),
+			#(function.webapi.slap,        lambda string: re.search(R"PRIVMSG(.+?):slap$", string).group(2).strip()),
 			(function.webapi.trick,     lambda string: re.search(R"PRIVMSG(.+?):\>u (.+)", string).group(2).strip()),
 			(function.webapi.weather,   lambda string: re.search(R"PRIVMSG(.+?):\>w (.+)", string).group(2).strip()),
 			(function.fenci,            lambda string: re.search(R"PRIVMSG(.+?):\>f (.+)", string).group(2).strip()),
