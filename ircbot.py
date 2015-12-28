@@ -99,15 +99,15 @@ def helloUser(bot, Queue, message,):
 			if re.search(reIPv4, origin_ip):
 				print(">>> " + tonick)
 				ip = re.search(reIPv4, origin_ip).group(0)
-				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcom to #jolla-cn (type >h for more information)" )
+				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcome to #jolla-cn (type >h for more information)" )
 			elif re.search(reIPv6, origin_ip):
 				print(">>> " + tonick)
 				ip = re.search(reIPv6, origin_ip).group(0)
-				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcom to #jolla-cn (type >h for more information)" )
+				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcome to #jolla-cn (type >h for more information)" )
 			elif re.search(reURL, origin_ip):
 				print(">>> " + tonick)
 				ip = re.search(reURL, origin_ip).group(0)
-				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcom to #jolla-cn (type >h for more information)" )
+				replyMessage(Queue, bot, "", tonick + ":Hello,i am a robot,welcome to #jolla-cn (type >h for more information)" )
 					
 def searchUserLocation(bot, Queue, message, check_the_water_meter = ""):
 	if re.search(R"JOIN", message.strip()):
