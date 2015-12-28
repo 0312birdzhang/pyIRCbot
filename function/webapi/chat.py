@@ -9,4 +9,11 @@ def reply(string):
 		response = urllib.request.urlopen(API + urllib.request.quote(string.encode("utf8")))
 		return r.json()['response'].encode("utf-8")
 	except:
-		return "玩坏了Orz..."
+		try:
+			response = urllib.request.urlopen(chatURL + urllib.request.quote(string.encode("utf8")))
+			data = response.read()
+			result = json.loads(data.decode("utf8"))
+			finalResult = result['text']
+			return finalResult
+		except:
+			return "玩坏掉了Orz..."
