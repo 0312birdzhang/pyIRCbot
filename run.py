@@ -4,9 +4,9 @@ import ircbot
 
 ircHost = "irc.freenode.net"
 ircPort = 6666
-botName = "bzzzt"
+botName = "bots-r2d2"
 botPass = ""
-ircChan = "#linuxba"
+ircChan = "#jolla-cn"
 
 
 
