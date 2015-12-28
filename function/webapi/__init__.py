@@ -7,3 +7,4 @@ import function.webapi.weather
 import function.webapi.ip
 import function.webapi.ping
 import function.webapi.py3exec
+import function.webapi.slap
