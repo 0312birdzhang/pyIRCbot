@@ -149,7 +149,7 @@ class filterFun(threading.Thread):
 		self.String = string
 		self.Map = [
 			(helpcmd,                   lambda string: re.search(R"PRIVMSG(.+?):\>h$", string.strip()).group(0)),
-			(function.webapi.chat,      lambda string: re.search(R"PRIVMSG(.+?):\>b (.+)", string).group(2).strip()),
+			(function.webapi.chat,      lambda string: re.search(R"PRIVMSG(.+?):bots-xiaoice: (.+)", string).group(2).strip()),
 # 			(function.webapi.joke,      lambda string: re.search(R"PRIVMSG(.+?):\>j$", string.strip()).group(0)),
 # 			(function.webapi.maxim,     lambda string: re.search(R"PRIVMSG(.+?):\>m$", string.strip()).group(0)),
 # 			(function.webapi.sm,        lambda string: re.search(R"PRIVMSG(.+?):\>s (.+)", string).group(2).strip()),

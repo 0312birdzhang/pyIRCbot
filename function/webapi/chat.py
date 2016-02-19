@@ -12,6 +12,7 @@ def reply(string):
 		req = urllib.request.urlopen(req).read()
 		ans = json.loads(req.decode('utf-8'))["answer"]
 		print(ans)
+		return ans
 	except Exception as e:
 		print(e)
 		return "玩坏掉了Orz..."
