@@ -150,15 +150,15 @@ class filterFun(threading.Thread):
 		self.Map = [
 			(helpcmd,                   lambda string: re.search(R"PRIVMSG(.+?):\>h$", string.strip()).group(0)),
 			(function.webapi.chat,      lambda string: re.search(R"PRIVMSG(.+?):\>b (.+)", string).group(2).strip()),
-			(function.webapi.joke,      lambda string: re.search(R"PRIVMSG(.+?):\>j$", string.strip()).group(0)),
-			(function.webapi.maxim,     lambda string: re.search(R"PRIVMSG(.+?):\>m$", string.strip()).group(0)),
-			(function.webapi.sm,        lambda string: re.search(R"PRIVMSG(.+?):\>s (.+)", string).group(2).strip()),
-			(function.webapi.slap,        lambda string: re.search(R"PRIVMSG(.+?):slap$", string).group(2).strip()),
-			(function.webapi.trick,     lambda string: re.search(R"PRIVMSG(.+?):\>u (.+)", string).group(2).strip()),
-			(function.webapi.weather,   lambda string: re.search(R"PRIVMSG(.+?):\>w (.+)", string).group(2).strip()),
-			(function.fenci,            lambda string: re.search(R"PRIVMSG(.+?):\>f (.+)", string).group(2).strip()),
-			(function.webapi.ping,      lambda string: re.search(R"PRIVMSG(.+?):ping\!$", string.strip().lower()).group(0)),
-			(function.webapi.ip,        lambda string: re.search(R"PRIVMSG(.+?):\>i (.+)", string).group(2).strip())
+# 			(function.webapi.joke,      lambda string: re.search(R"PRIVMSG(.+?):\>j$", string.strip()).group(0)),
+# 			(function.webapi.maxim,     lambda string: re.search(R"PRIVMSG(.+?):\>m$", string.strip()).group(0)),
+# 			(function.webapi.sm,        lambda string: re.search(R"PRIVMSG(.+?):\>s (.+)", string).group(2).strip()),
+# 			(function.webapi.slap,        lambda string: re.search(R"PRIVMSG(.+?):slap$", string).group(2).strip()),
+# 			(function.webapi.trick,     lambda string: re.search(R"PRIVMSG(.+?):\>u (.+)", string).group(2).strip()),
+# 			(function.webapi.weather,   lambda string: re.search(R"PRIVMSG(.+?):\>w (.+)", string).group(2).strip()),
+# 			(function.fenci,            lambda string: re.search(R"PRIVMSG(.+?):\>f (.+)", string).group(2).strip()),
+# 			(function.webapi.ping,      lambda string: re.search(R"PRIVMSG(.+?):ping\!$", string.strip().lower()).group(0)),
+# 			(function.webapi.ip,        lambda string: re.search(R"PRIVMSG(.+?):\>i (.+)", string).group(2).strip())
 		]
 		self.Map2 = [
 			(function.webapi.py3exec,   lambda string: re.search(R"PRIVMSG(.+?):\>\>\> (.+)", string).group(2).strip())
@@ -191,17 +191,17 @@ class filterFun(threading.Thread):
 			except Exception as e:
 				pass
 
-		for (filterMod, filterFun) in self.Map2:
-			try:
-				if filterFun(self.String):
-					fromnick = re.match(r"^:([^!]+)", self.String).group(1)
-					channel = re.search(R"PRIVMSG(.+?):", self.String).group(1).strip()
-					content = filterFun(self.String)
-					replies = filterMod.reply(content)
-					print(">>> " + fromnick + ": " + content + "\n")
-					replyMessage(self.Queue, self.Bot, fromnick, replies, channel)
-			except Exception as e:
-				pass
+# 		for (filterMod, filterFun) in self.Map2:
+# 			try:
+# 				if filterFun(self.String):
+# 					fromnick = re.match(r"^:([^!]+)", self.String).group(1)
+# 					channel = re.search(R"PRIVMSG(.+?):", self.String).group(1).strip()
+# 					content = filterFun(self.String)
+# 					replies = filterMod.reply(content)
+# 					print(">>> " + fromnick + ": " + content + "\n")
+# 					replyMessage(self.Queue, self.Bot, fromnick, replies, channel)
+# 			except Exception as e:
+# 				pass
 
 
 class sendQueue(threading.Thread):

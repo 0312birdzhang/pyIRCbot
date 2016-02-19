@@ -1,19 +1,11 @@
 import urllib.request
 import json
 
-chatURL = "http://www.tuling123.com/openapi/api?key=b1833040534a6bfd761215154069ea58&info="
-API="http://sandbox.api.simsimi.com/request.p?key=0eca389b-d21a-46d3-9606-826176396c44&lc=zh&ft=1.0&text="
+API="http://127.0.0.1:10058/openxiaoice/ask?q="
 def reply(string):
 	#调用小黄鸡api
 	try:
 		response = urllib.request.urlopen(API + urllib.request.quote(string.encode("utf8")))
-		return r.json()['response'].encode("utf-8")
+		return r.json()['answer'].encode("utf-8")
 	except:
-		try:
-			response = urllib.request.urlopen(chatURL + urllib.request.quote(string.encode("utf8")))
-			data = response.read()
-			result = json.loads(data.decode("utf8"))
-			finalResult = result['text']
-			return finalResult
-		except:
-			return "玩坏掉了Orz..."
+		return "玩坏掉了Orz..."
