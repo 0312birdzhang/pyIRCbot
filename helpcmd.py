@@ -1,4 +1,3 @@
-import requests
 
 def reply(string):
     rets =  """>h, 查看帮助; >b[空格]内容, 和我聊天; """
